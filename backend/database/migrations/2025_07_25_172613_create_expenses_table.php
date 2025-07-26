@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('currency_code');
             $table->foreign('currency_code')->references('code')->on('currencies');
             $table->foreignId('category_id')->constrained('categories_expense');
+            $table->foreignId('category_budget_rule_id')->constrained('categories_budget_rule')->nullable();
         });
     }
 

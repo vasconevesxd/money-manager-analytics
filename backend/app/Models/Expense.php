@@ -28,4 +28,9 @@ class Expense extends Model
     {
         return $this->belongsTo(CategoryExpense::class, 'category_id');
     }
+
+    public function categoryBudgetRule()
+    {
+        return $this->belongsTo(CategoryBudgetRule::class, 'category_budget_rule_id');
+    }
 } 
