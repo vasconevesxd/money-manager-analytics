@@ -12,6 +12,7 @@ class Expense extends Model
         'comment',
         'currency_code',
         'category_id',
+        'category_budget_rule_id',
     ];
 
     protected $casts = [

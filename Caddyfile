@@ -1,0 +1,18 @@
+{
+    local_certs
+    servers {
+        trusted_proxies static 172.16.0.0/12 192.168.0.0/16
+    }
+}
+
+:80, :443 {
+    tls internal
+
+    handle /api* {
+        reverse_proxy backend:9000
+    }
+
+    handle {
+        reverse_proxy frontend:3000
+    }
+}

@@ -35,35 +35,4 @@ class CategoryBudgetRuleController extends Controller
         return response()->json($categoryBudgetRule);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(CategoryBudgetRule $categoryBudgetRule)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(CategoryBudgetRule $categoryBudgetRule)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, CategoryBudgetRule $categoryBudgetRule)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(CategoryBudgetRule $categoryBudgetRule)
-    {
-        //
-    }
 }

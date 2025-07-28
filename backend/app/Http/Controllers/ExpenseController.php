@@ -13,31 +13,8 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        $expenses = Expense::all();
+        return response()->json($expenses);
     }
 
     /**
@@ -65,11 +42,4 @@ class ExpenseController extends Controller
         return response()->json(['message' => 'Expense updated', 'expense' => $expense]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

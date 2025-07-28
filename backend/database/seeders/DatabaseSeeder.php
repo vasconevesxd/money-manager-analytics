@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             CurrencySeeder::class,
             CategoryExpenseSeeder::class,
             CategoryIncomeSeeder::class,
+            CategoryBudgetRuleSeeder::class,
             ExpenseSeeder::class,
             IncomeSeeder::class,
         ]);

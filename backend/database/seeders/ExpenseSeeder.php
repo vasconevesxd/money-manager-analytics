@@ -6,6 +6,7 @@ use App\Models\Expense;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+
 class ExpenseSeeder extends Seeder
 {
     /**
@@ -19,6 +20,7 @@ class ExpenseSeeder extends Seeder
             'amount' => 100,
             'currency_code' => 'USD',
             'comment' => 'Food',
+            'category_budget_rule_id' => 1,
         ]);
 
         Expense::create([
@@ -27,6 +29,7 @@ class ExpenseSeeder extends Seeder
             'amount' => 200,
             'currency_code' => 'EUR',
             'comment' => 'Transport',
+            'category_budget_rule_id' => 1,
         ]);
     }
 }

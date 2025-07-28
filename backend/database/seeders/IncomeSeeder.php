@@ -19,6 +19,7 @@ class IncomeSeeder extends Seeder
             'amount' => 100,
             'currency_code' => 'USD',
             'comment' => 'Salary',
+            'category_budget_rule_id' => 1,
         ]);
 
         Income::create([
@@ -27,6 +28,7 @@ class IncomeSeeder extends Seeder
             'amount' => 200,
             'currency_code' => 'EUR',
             'comment' => 'Freelance',
+            'category_budget_rule_id' => null,
         ]);
     }
 }

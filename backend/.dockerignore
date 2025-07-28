@@ -1,0 +1,53 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+docker-compose.yml
+.docker
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Vendor directory (will be installed in the container)
+/vendor
+
+# Node modules
+/node_modules
+/public/hot
+/public/storage
+
+# Storage
+/storage/*.key
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+
+# Tests
+/tests
+phpunit.xml
+
+# IDE and editor files
+/.idea
+/.vscode
+*.sublime-project
+*.sublime-workspace
+/.phpstorm.meta.php
+/_ide_helper.php
+/_ide_helper_models.php
+
+# Misc
+/.phpunit.cache
+/.fleet
+/.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+*.log
+.DS_Store 
