@@ -2,14 +2,20 @@
     local_certs
     servers {
         trusted_proxies static 172.16.0.0/12 192.168.0.0/16
+        protocols h1 h2
     }
+    auto_https off
 }
 
-:80, :443 {
-    tls internal
-
-    handle /api* {
-        reverse_proxy backend:9000
+:80 {
+    handle /api/* {
+        uri strip_prefix /api
+        reverse_proxy backend:9000 {
+            transport fastcgi {
+                split .php
+                env SCRIPT_FILENAME /var/www/public/index.php
+            }
+        }
     }
 
     handle {

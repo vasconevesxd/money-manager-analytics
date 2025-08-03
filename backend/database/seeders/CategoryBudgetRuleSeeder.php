@@ -13,17 +13,20 @@ class CategoryBudgetRuleSeeder extends Seeder
      */
     public function run(): void
     {
-        CategoryBudgetRule::create([
-            'name' => 'Essencial',
-        ]);
+       
+        $rules = [
+            'Essential Needs',      // Rent, food, transport, bills
+            'Savings & Investments',// Emergency fund, retirement, investing
+            'Wants & Lifestyle',    // Dining out, entertainment, travel
+            'Debt Repayment',       // Credit card, loans
+            'Charity & Donations',  // Tithes, causes
+        ];
 
-        CategoryBudgetRule::create([
-            'name' => 'Savings',
-        ]);
-
-        CategoryBudgetRule::create([
-            'name' => 'Wants',
-        ]);
+        foreach ($rules as $rule) {
+            CategoryBudgetRule::create([
+                'name' => $rule,
+            ]);
+        }
 
     }
 }

@@ -34,4 +34,9 @@ class Income extends Model
     {
         return $this->belongsTo(CategoryBudgetRule::class, 'category_budget_rule_id');
     }
+
+    public static function fetchWithRelations()
+    {
+        return self::with(['category', 'categoryBudgetRule']);
+    }
 } 

@@ -11,12 +11,11 @@ Route::get('/category-budget-rule', [CategoryBudgetRuleController::class, 'index
 Route::get('/expense', [ExpenseController::class, 'index']);
 Route::get('/income', [IncomeController::class, 'index']);
 
-Route::put('/expense', [ExpenseController::class, 'update']);
-Route::put('/income', [IncomeController::class, 'update']);
+Route::get('/expense/time-filter', [ExpenseController::class, 'expenseTimeFilter']);
+Route::get('/income/time-filter', [IncomeController::class, 'incomeTimeFilter']);
 
-Route::post('/import', [ExcelImportController::class, 'import']);
+Route::put('/expense/{id}', [ExpenseController::class, 'update']);
+Route::put('/income/{id}', [IncomeController::class, 'update']);
+
+Route::post('/import-expenses', [ExcelImportController::class, 'importExpenses']);
 Route::post('/category-budget-rule', [CategoryBudgetRuleController::class, 'store']);
-
-Route::get('/status', function () {
-    return response()->json(['message' => 'Hello World']);
-});

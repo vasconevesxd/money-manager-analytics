@@ -10,6 +10,7 @@ class CategoryExpense extends Model
 
     protected $fillable = [
         'name',
+        'color',
     ];
 
     public function expenses()

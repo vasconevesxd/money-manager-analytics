@@ -10,6 +10,7 @@ class CategoryIncome extends Model
 
     protected $fillable = [
         'name',
+        'color',
     ];
 
     public function incomes()

@@ -13,12 +13,32 @@ class CategoryIncomeSeeder extends Seeder
      */
     public function run(): void
     {
-        CategoryIncome::create([
-            'name' => 'Salary',
-        ]);
+        $colors = [
+            '#FF5733', // Red
+            '#33FF57', // Green
+            '#3357FF', // Blue
+            '#FF33A1', // Pink
+            '#FFD700', // Gold
+        ];
 
-        CategoryIncome::create([
-            'name' => 'Freelance',
-        ]);
+        $categories = [
+            'Salary',
+            'Freelance',
+            'Dividends',
+            'Investments',
+            'Gifts',
+            'Rental Income',
+            'Royalties',
+            'Refunds',
+            'Bonuses',
+            'Other',
+        ];
+
+        foreach ($categories as $index => $name) {
+            CategoryIncome::create([
+                'name' => $name,
+                'color' => $colors[$index % count($colors)],
+            ]);
+        }
     }
 }

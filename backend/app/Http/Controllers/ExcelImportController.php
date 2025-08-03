@@ -13,7 +13,7 @@ use App\Imports\ExcelImport;
 
 class ExcelImportController extends Controller
 {
-    public function import(Request $request)
+    public function importExpenses(Request $request)
     {
         $request->validate([
             'file' => 'required|file|mimes:xlsx,xls'
@@ -28,7 +28,11 @@ class ExcelImportController extends Controller
 
             DB::commit();
 
-            return response()->json(['message' => 'Import completed successfully.']);
+            return response()->json([
+                'status' => true,
+                'status_code' => 202,
+                'message' => 'Import completed successfully.',
+            ]);
         } catch (ValidationException $e) {
             DB::rollBack();
 
@@ -37,6 +41,8 @@ class ExcelImportController extends Controller
             return response()->json([
                 'errors' => collect($failures)->map(function ($failure) {
                     return [
+                        'status' => false,
+                        'status_code' => 422,
                         'row' => $failure->row(),
                         'attribute' => $failure->attribute(),
                         'errors' => $failure->errors(),
@@ -49,7 +55,11 @@ class ExcelImportController extends Controller
             DB::rollBack();
             Log::error('Excel import error: ' . $e->getMessage());
 
-            return response()->json(['error' => 'Import failed: ' . $e->getMessage()], 500);
+            return response()->json([
+                'status' => false,
+                'status_code' => 500,
+                'message' => 'Import failed: ' . $e->getMessage(),
+            ], 500);
         }
     }
 }

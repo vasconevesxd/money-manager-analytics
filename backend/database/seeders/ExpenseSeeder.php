@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Expense;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use Carbon\Carbon;
 
 class ExpenseSeeder extends Seeder
 {
@@ -14,22 +14,59 @@ class ExpenseSeeder extends Seeder
      */
     public function run(): void
     {
-        Expense::create([
-            'date_time' => now(),
-            'category_id' => 1,
-            'amount' => 100,
-            'currency_code' => 'USD',
-            'comment' => 'Food',
-            'category_budget_rule_id' => 1,
-        ]);
+        $expenses = [
+            [
+                'date_time' => Carbon::now()->subDays(2),
+                'category_id' => 1, // Food
+                'amount' => 23.50,
+                'currency_code' => 'EUR',
+                'comment' => 'Groceries from Lidl',
+                'category_budget_rule_id' => 1,
+            ],
+            [
+                'date_time' => Carbon::now()->subDays(4),
+                'category_id' => 2, // Transport
+                'amount' => 15.00,
+                'currency_code' => 'EUR',
+                'comment' => 'Uber to work',
+                'category_budget_rule_id' => 1,
+            ],
+            [
+                'date_time' => Carbon::now()->subDays(7),
+                'category_id' => 3, // Entertainment
+                'amount' => 49.99,
+                'currency_code' => 'USD',
+                'comment' => 'Spotify and Netflix subscription',
+                'category_budget_rule_id' => 2,
+            ],
+            [
+                'date_time' => Carbon::now()->subDays(10),
+                'category_id' => 4, // Utilities
+                'amount' => 78.20,
+                'currency_code' => 'EUR',
+                'comment' => 'Electricity bill',
+                'category_budget_rule_id' => 2,
+            ],
+            [
+                'date_time' => Carbon::now()->subDays(12),
+                'category_id' => 5, // Health
+                'amount' => 32.00,
+                'currency_code' => 'EUR',
+                'comment' => 'Pharmacy - flu medicine',
+                'category_budget_rule_id' => null,
+            ],
+            [
+                'date_time' => Carbon::now()->subDays(15),
+                'category_id' => 6, // Dining out
+                'amount' => 64.75,
+                'currency_code' => 'EUR',
+                'comment' => 'Dinner with friends at Italian restaurant',
+                'category_budget_rule_id' => 1,
+            ],
+        ];
 
-        Expense::create([
-            'date_time' => now(),
-            'category_id' => 2,
-            'amount' => 200,
-            'currency_code' => 'EUR',
-            'comment' => 'Transport',
-            'category_budget_rule_id' => 1,
-        ]);
+        foreach ($expenses as $expense) {
+            Expense::create($expense);
+        }
     }
 }
