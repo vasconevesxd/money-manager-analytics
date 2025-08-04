@@ -1,8 +1,8 @@
 import { computed } from 'vue';
 import type { Expense } from '@/types/db';
 import type { ExpensesCategoriesSerie } from '../types';
-import { groupExpensesByCategory } from '../utils/groupExpensesByCategory';
-import { calculateExpensesPercentages } from '../utils/calculateExpensesPercentages';
+import { groupExpensesByCategory } from '../helpers/groupExpensesByCategory';
+import { calculateExpensesPercentages } from '../helpers/calculateExpensesPercentages';
 
 export function useExpensesCategoriesSeries(expenses: Expense[] | undefined) {
   return computed<ExpensesCategoriesSerie[]>(() => {

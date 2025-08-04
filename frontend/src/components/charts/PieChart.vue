@@ -3,7 +3,7 @@
   import { Chart } from 'highcharts-vue';
   import type { Point, Chart as HighchartsChart, Options } from 'highcharts';
   import type { Series } from './types';
-  import { getPieChartOptions } from './utils/getPieChartOptions';
+  import { getPieChartOptions } from './helpers/getPieChartOptions';
 
   const props = defineProps<{
     title?: string;

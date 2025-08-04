@@ -8,7 +8,7 @@
   // Local imports
   import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
   import InputDatepicker from '@/components/datepicker/InputDatepicker.vue';
-  import OverviewCard from '@/features/dashboard/OverviewCard.vue';
+  import OverviewCard from '@/components/OverviewCard.vue';
   import CategoriesExpensesChart from '@/features/dashboard/analytics/CategoriesExpensesChart.vue';
   import api from '@/lib/api';
 
@@ -17,8 +17,6 @@
   import type { Expense, Income } from '@/types/db';
 
   const timeframe = ref<'day' | 'week' | 'year' | 'custom'>('year');
-
-  const showCustomDatePicker = computed(() => timeframe.value === 'custom');
 
   const customDateRange = ref({
     start: dayjs().subtract(1, 'month').format('YYYY-MM-DD'), // Default: 1 month ago
@@ -93,30 +91,29 @@ const totalSaved = computed(() => new Decimal(totalIncome.value).minus(totalExpe
         <TabsTrigger value="year">Year</TabsTrigger>
         <TabsTrigger value="custom">Custom</TabsTrigger>
       </TabsList>
-
-      <div v-if="showCustomDatePicker" class="mt-4 p-4 bg-muted rounded-md">
-        <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-          <div class="flex flex-col space-y-2">
-            <InputDatepicker
-              v-model="customDateRange.start"
-              :max-date="customDateRange.end"
-              label="Start Date"
-              class="px-3 py-2 border rounded-md"
-            />
-          </div>
-          <div class="flex flex-col space-y-2">
-            <InputDatepicker
-              v-model="customDateRange.end"
-              :min-date="customDateRange.start"
-              label="End Date"
-              class="px-3 py-2 border rounded-md"
-            />
+      <TabsContent :value="timeframe">
+        <div v-if="timeframe === 'custom'" class="mt-4 p-4 bg-muted rounded-md">
+          <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+            <div class="flex flex-col space-y-2">
+              <InputDatepicker
+                v-model="customDateRange.start"
+                :max-date="customDateRange.end"
+                label="Start Date"
+                class="px-3 py-2 border rounded-md"
+              />
+            </div>
+            <div class="flex flex-col space-y-2">
+              <InputDatepicker
+                v-model="customDateRange.end"
+                :min-date="customDateRange.start"
+                label="End Date"
+                class="px-3 py-2 border rounded-md"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <TabsContent :value="timeframe" class="mt-4">
         <Transition name="fade-slide" mode="out-in">
-          <div :key="timeframe" class="grid gap-4 md:grid-cols-3">
+          <div :key="timeframe" class="grid gap-4 md:grid-cols-3 mt-4">
             <OverviewCard
               title="Income"
               description="Total income based on selected timeframe"
@@ -142,8 +139,8 @@ const totalSaved = computed(() => new Decimal(totalIncome.value).minus(totalExpe
           </div>
         </Transition>
 
-        <Transition v-if="expenses && expenses.length > 0" name="fade-slide" mode="out-in">
-          <div :key="`chart-${timeframe}`" class="mt-6">
+        <Transition  v-if="expenses && expenses.length > 0"  name="fade-slide" mode="out-in">
+          <div :key="`chart-${timeframe}`" class="mt-6" >
             <CategoriesExpensesChart :expenses="expenses" />
           </div>
         </Transition>
