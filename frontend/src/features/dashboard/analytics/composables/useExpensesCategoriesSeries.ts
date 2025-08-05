@@ -1,14 +1,15 @@
 import { computed } from 'vue';
+import type { Ref } from 'vue';
 import type { Expense } from '@/types/db';
 import type { ExpensesCategoriesSerie } from '../types';
 import { groupExpensesByCategory } from '../helpers/groupExpensesByCategory';
 import { calculateExpensesPercentages } from '../helpers/calculateExpensesPercentages';
 
-export function useExpensesCategoriesSeries(expenses: Expense[] | undefined) {
+export function useExpensesCategoriesSeries(expenses: Ref<Expense[] | undefined>) {
   return computed<ExpensesCategoriesSerie[]>(() => {
-    if (!expenses) return [];
+    if (!expenses.value) return [];
 
-    const grouped = groupExpensesByCategory(expenses);
+    const grouped = groupExpensesByCategory(expenses.value);
     return calculateExpensesPercentages(grouped);
   });
 }

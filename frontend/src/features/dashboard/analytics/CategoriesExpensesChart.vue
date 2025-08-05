@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, computed } from 'vue';
   import PieChart from '@/components/charts/PieChart.vue';
   import type { Expense } from '@/types/db';
   import { useExpensesCategoriesSeries } from './composables/useExpensesCategoriesSeries';
 
   const props = defineProps<{ expenses: Expense[] | undefined }>();
 
-  const expensesCategoriesSeries = useExpensesCategoriesSeries(props.expenses);
+  const expensesCategoriesSeries = useExpensesCategoriesSeries(computed(() => props.expenses));
 
   const selectedName = ref('');
 
@@ -20,7 +20,7 @@
 </script>
 
 <template>
-  <div v-if="expensesCategoriesSeries.length > 0" class="grid grid-cols-1">
+  <div v-if="expensesCategoriesSeries.length > 0" class="grid grid-cols-1 mt-8">
     <h2 class="text-xl font-semibold mb-4 tracking-tight">Categories Expenses</h2>
 
     <div class="pt-6 rounded-2xl shadow-md bg-white">
