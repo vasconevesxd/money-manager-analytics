@@ -49,7 +49,7 @@ class ExpensesImport implements ToModel, WithHeadingRow, WithValidation
 
         $dateTime = Date::excelToDateTimeObject($row['date_and_time'])->format('Y-m-d');
 
-        return new Expense([
+        return Expense::firstOrCreate([
             'date_time' => $dateTime,
             'amount' => $row['amount_in_default_currency'],
             'currency_code' => $currency->code,

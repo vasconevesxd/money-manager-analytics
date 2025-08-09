@@ -28,7 +28,7 @@
 </script>
 
 <template>
-  <div v-if="timeframe === 'custom'" class="mt-4 p-4 bg-muted rounded-md">
+  <div v-if="timeframe === 'custom'" class="p-4 bg-muted rounded-md">
     <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
       <div class="flex flex-col space-y-2">
         <InputDatepicker

@@ -15,7 +15,9 @@ class CategoryExpenseController extends Controller
         ->makeHidden(['category_budget_rule_id', 'created_at', 'updated_at']);
 
         $categories->each(function ($category) {
-            $category->categoryBudgetRule->makeHidden(['created_at', 'updated_at']);
+            if ($category->categoryBudgetRule) {
+                $category->categoryBudgetRule->makeHidden(['created_at', 'updated_at']);
+            }
         });
     
     return response()->json($categories);

@@ -37,7 +37,7 @@
 </script>
 
 <template>
-  <div v-if="hasIncome && hasExpenses" class="grid gap-4 md:grid-cols-3 mt-4">
+  <div v-if="hasIncome && hasExpenses" class="grid gap-4 md:grid-cols-3">
     <OverviewCard
       title="Income"
       description="Total income based on selected timeframe"

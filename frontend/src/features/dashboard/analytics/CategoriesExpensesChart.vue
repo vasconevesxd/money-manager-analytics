@@ -9,6 +9,7 @@
   import type { Expense } from '@/types/db/index.types';
 
   // Components
+  import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
   import PieChart from '@/components/charts/PieChart.vue';
 
   // Composables
@@ -32,10 +33,11 @@
 </script>
 
 <template>
-  <div v-if="expensesCategoriesSeries.length > 0" class="grid grid-cols-1 mt-8">
-    <h2 class="text-xl font-semibold mb-4 tracking-tight">Categories Expenses</h2>
-
-    <div class="pt-6 rounded-2xl shadow-md bg-white">
+  <Card v-if="expensesCategoriesSeries.length > 0">
+    <CardHeader>
+      <CardTitle>Categories Expenses</CardTitle>
+    </CardHeader>
+    <CardContent>
       <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1.5fr)_1fr] items-start gap-4 px-4">
         <PieChart :series="expensesCategoriesSeries" :selected-name="selectedName" />
 
@@ -63,6 +65,6 @@
           </button>
         </div>
       </div>
-    </div>
-  </div>
+    </CardContent>
+  </Card>
 </template>

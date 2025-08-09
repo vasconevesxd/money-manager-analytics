@@ -19,7 +19,6 @@ class ExpenseController extends Controller
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
         ]);
-    
 
         // Start query with relations (do NOT get yet)
         $query = Expense::fetchWithRelations();
@@ -38,7 +37,13 @@ class ExpenseController extends Controller
     
         // Hide foreign keys from each Expense
         $expenses->each(function ($expense) {
-            $expense->makeHidden(['category_id']);
+            $expense->makeHidden(['category_id', 'category_budget_rule_id', 'created_at', 'updated_at']);
+            if ($expense->category) {
+                $expense->category->makeHidden(['created_at', 'updated_at']);
+                if ($expense->category->category_budget_rule) {
+                    $expense->category->category_budget_rule->makeHidden(['created_at', 'updated_at']);
+                }
+            }
         });
     
         return response()->json($expenses);

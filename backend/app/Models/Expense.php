@@ -32,6 +32,6 @@ class Expense extends Model
 
     public static function fetchWithRelations()
     {
-        return self::with(['category']);
+        return self::with(['category.categoryBudgetRule']);
     }
 } 

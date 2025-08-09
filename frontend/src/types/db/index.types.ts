@@ -13,6 +13,7 @@ export interface CategoryExpense {
   updated_at?: string;
   budget?: number;
   color?: string;
+  category_budget_rule?: CategoryBudgetRule;
   category_budget_rule_id?: number;
 }
 
@@ -35,7 +36,6 @@ export interface Expense {
   created_at?: string;
   updated_at?: string;
   category?: CategoryExpense;
-  categoryBudgetRule?: CategoryBudgetRule;
 }
 
 export interface Income {
@@ -47,6 +47,5 @@ export interface Income {
   category_id: number;
   created_at?: string;
   updated_at?: string;
-  category?: CategoryExpense;
-  categoryBudgetRule?: CategoryBudgetRule;
+  category?: CategoryIncome;
 }

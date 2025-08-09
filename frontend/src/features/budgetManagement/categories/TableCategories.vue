@@ -81,14 +81,13 @@
 
         <TableCell>
           <Select
-            :key="`${category.category_budget_rule.id}-${category.category_budget_rule.name}`"
-            v-model="category.category_budget_rule.id"
+            :key="`${category.category_budget_rule?.id}-${category?.category_budget_rule?.name}`"
             @update:model-value="
               (val) => updateCategoryExpenseMutation({categoryId: category.id, budgetRuleId: val === null ? null : Number(val), color: category.color})
             "
           >
             <SelectTrigger>
-              <SelectValue :placeholder="category.category_budget_rule.name" />
+              <SelectValue :placeholder="category.category_budget_rule?.name" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem v-for="rule in categoryBudgetRules" :key="rule.id" :value="rule.id">

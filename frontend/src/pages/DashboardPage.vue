@@ -18,6 +18,7 @@
   import CategoriesExpensesChart from '@/features/dashboard/analytics/CategoriesExpensesChart.vue';
   import CustomTimeFilter from '@/features/dashboard/filters/CustomTimeFilter.vue';
   import TimeFilter from '@/features/dashboard/filters/TimeFilter.vue';
+  import AverageExpensesTable from '@/features/dashboard/analytics/AverageExpensesTable.vue';
 
   // Composables
   import { useExpenseTimeFilterQuery } from '@/features/dashboard/services/useExpenseTimeFilterQuery';
@@ -34,13 +35,13 @@
   const { dateFilter } = useDateFilter(timeframe, customDateRange);
 
   const {
-    data: expenseSummary,
+    data: expensesByTimeframe,
     isLoading: isLoadingExpenses,
     error: expensesError,
   } = useExpenseTimeFilterQuery(dateFilter);
 
   const {
-    data: incomeSummary,
+    data: incomeByTimeframe,
     isLoading: isLoadingIncome,
     error: incomeError,
   } = useIncomeTimeFilterQuery(dateFilter);
@@ -66,19 +67,23 @@
     <TimeFilter :timeframe="timeframe" @update:timeframe="handleTimeframeChange">
       <template #panels="{ timeframe }">
         <Transition name="fade-slide" mode="out-in">
-          <section v-if="timeframe" :key="timeframe">
+          <section v-if="timeframe" :key="timeframe" class="grid gap-8">
             <CustomTimeFilter
               :timeframe="timeframe"
               :custom-date-range="customDateRange"
               @update:custom-date-range-selected="handleCustomDateRangeSelected"
             />
             <OverviewInfo
-              :income="incomeSummary"
-              :expenses="expenseSummary"
+              :income="incomeByTimeframe"
+              :expenses="expensesByTimeframe"
               :request-state="{ isLoadingIncome, isLoadingExpenses, incomeError, expensesError }"
             />
             <CategoriesExpensesChart
-              :expenses="expenseSummary"
+              :expenses="expensesByTimeframe"
+              :request-state="{ isLoadingExpenses, expensesError }"
+            />
+            <AverageExpensesTable
+              :expenses="expensesByTimeframe"
               :request-state="{ isLoadingExpenses, expensesError }"
             />
           </section>
