@@ -22,7 +22,7 @@
     </div>
 
     <Separator />
-    
+
     <CategoriesCard>
       <div class="flex justify-end gap-4 mb-2">
         <AddBudget />

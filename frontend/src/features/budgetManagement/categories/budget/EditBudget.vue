@@ -35,7 +35,7 @@
   const isDialogOpen = ref(false);
 
   const editCategoryBudget = async ({ id, name }: CategoryBudgetRule) => {
-    const promise =  await updateCategoryBudgetRule({
+    const promise = await updateCategoryBudgetRule({
       categoryId: id,
       name: name,
     });

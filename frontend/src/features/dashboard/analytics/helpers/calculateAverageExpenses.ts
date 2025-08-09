@@ -9,7 +9,13 @@ export function calculateAverageExpenses(expenses: Expense[]): AverageExpenseRow
 
   const map = new Map<
     string,
-    { categoryName: string; categoryBudgetName: string; currencyCode: string; total: number; count: number }
+    {
+      categoryName: string;
+      categoryBudgetName: string;
+      currencyCode: string;
+      total: number;
+      count: number;
+    }
   >();
 
   for (const expense of expenses) {

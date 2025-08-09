@@ -33,23 +33,28 @@
 
   const { mutate: updateCategoryExpense } = useUpdateCategoryExpense();
 
-  const updateCategoryExpenseMutation  = async ({categoryId, budgetRuleId, color}: {categoryId: number, budgetRuleId: number | null, color: string}) => {
+  const updateCategoryExpenseMutation = async ({
+    categoryId,
+    budgetRuleId,
+    color,
+  }: {
+    categoryId: number;
+    budgetRuleId: number | null;
+    color: string;
+  }) => {
     await updateCategoryExpense({ categoryId, category_budget_rule_id: budgetRuleId, color });
   };
 
   const selectedCategoryId = ref<number | null>(null);
 
   const openColorPicker = (categoryId: number) => {
-    if (selectedCategoryId.value === categoryId) return selectedCategoryId.value = null
-    return selectedCategoryId.value = categoryId;
-  }
-
+    if (selectedCategoryId.value === categoryId) return (selectedCategoryId.value = null);
+    return (selectedCategoryId.value = categoryId);
+  };
 </script>
 
 <template>
-  <Table
-    v-if="categoryExpensesWithBudgetRule && categoryBudgetRules"
-  >
+  <Table v-if="categoryExpensesWithBudgetRule && categoryBudgetRules">
     <TableHeader>
       <TableRow>
         <TableHead>Color</TableHead>
@@ -72,7 +77,13 @@
               :key="category.id"
               v-model="category.color"
               class="absolute! top-8 left-[-5px]"
-              @update:model-value="updateCategoryExpenseMutation({categoryId: category.id, budgetRuleId: category.category_budget_rule.id, color: $event as string})"
+              @update:model-value="
+                updateCategoryExpenseMutation({
+                  categoryId: category.id,
+                  budgetRuleId: category.category_budget_rule.id,
+                  color: $event as string,
+                })
+              "
             />
           </div>
         </TableCell>
@@ -83,7 +94,12 @@
           <Select
             :key="`${category.category_budget_rule?.id}-${category?.category_budget_rule?.name}`"
             @update:model-value="
-              (val) => updateCategoryExpenseMutation({categoryId: category.id, budgetRuleId: val === null ? null : Number(val), color: category.color})
+              (val) =>
+                updateCategoryExpenseMutation({
+                  categoryId: category.id,
+                  budgetRuleId: val === null ? null : Number(val),
+                  color: category.color,
+                })
             "
           >
             <SelectTrigger>
@@ -101,6 +117,6 @@
   </Table>
   <div v-else class="flex justify-center items-center h-full">
     <div class="flex flex-col items-center justify-center"></div>
-    <p>Error loading...</p> 
+    <p>Error loading...</p>
   </div>
 </template>

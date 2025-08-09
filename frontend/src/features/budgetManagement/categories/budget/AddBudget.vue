@@ -24,7 +24,7 @@
 
   const addCategoryBudget = async () => {
     const name = newCategoryBudget.value.trim();
-    
+
     if (!name) return;
 
     try {
@@ -41,9 +41,6 @@
         id: promise.id,
         name: name,
       });
-
- 
-
     } catch (error) {
       console.error(error);
     }
