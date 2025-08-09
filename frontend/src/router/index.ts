@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router';
 
 const routes = [
   { path: '/', component: () => import('@/pages/DashboardPage.vue') },
-  { path: '/categories', component: () => import('@/pages/CategoriesPage.vue') },
+  { path: '/budget-management', component: () => import('@/pages/BudgetManagementPage.vue') },
   { path: '/import', component: () => import('@/pages/ImportPage.vue') },
 ];
 

@@ -1,6 +1,6 @@
 import axios from './axios';
-import type { DateFilter } from '@/types/db/apiTypes';
-import type { Expense, Income } from '@/types/db';
+import type { DateFilter } from '@/types/db/api.types';
+import type { Expense, Income } from '@/types/db/index.types';
 
 // API service
 export const api = {
@@ -35,6 +35,34 @@ export const api = {
         'Content-Type': 'multipart/form-data',
       },
     });
+    return response.data;
+  },
+
+  getCategoryBudgetRule: async () => {
+    const response = await axios.get('/category-budget-rule');
+    return response.data;
+  },
+
+  getCategoryExpenseByBudgetRule: async () => {
+    const response = await axios.get('/category-expense-by-budget-rule');
+    return response.data;
+  },
+
+  updateCategoryBudgetRule: async (categoryId: number, payload: { name?: string }) => {
+    const response = await axios.patch(`/category-budget-rule/${categoryId}`, payload);
+    return response.data;
+  },
+
+  createCategoryBudget: async (category: string) => {
+    const response = await axios.post('/category-budget-rule', { name: category });
+    return response.data;
+  },
+
+  updateCategoryExpense: async (
+    categoryId: number,
+    payload: { color?: string; category_budget_rule_id?: number | null }
+  ) => {
+    const response = await axios.patch(`/category-expense/${categoryId}`, payload);
     return response.data;
   },
 };

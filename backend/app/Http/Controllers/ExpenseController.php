@@ -9,14 +9,6 @@ use Carbon\Carbon;
 
 class ExpenseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $request)
-    {
-        $expenses = Expense::with(['category', 'categoryBudgetRule'])->get();
-        return response()->json($expenses);
-    }
 
     /**
      * Filter expenses by time.
@@ -46,72 +38,10 @@ class ExpenseController extends Controller
     
         // Hide foreign keys from each Expense
         $expenses->each(function ($expense) {
-            $expense->makeHidden(['category_id', 'category_budget_rule_id']);
+            $expense->makeHidden(['category_id']);
         });
     
         return response()->json($expenses);
     }
-    
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $validator = Validator::make($request->only('category_budget_rule_id'), [
-            'category_budget_rule_id' => 'nullable|exists:categories_budget_rule,id',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
-
-        $validated = $validator->validated();
-
-        $expense = Expense::findOrFail($id);   
-
-        $expense->update($validated); 
-
-        return response()->json(['message' => 'Expense updated', 'expense' => $expense]);
-    }
-
-    /**
-     * Get summary statistics for expenses.
-     */
-    public function summary(Request $request)
-    {
-        $query = Expense::query();
-        
-        // Filter by start date if provided
-        if ($request->has('start_date')) {
-            $query->whereDate('date_time', '>=', $request->start_date);
-        }
-        
-        // Filter by end date if provided
-        if ($request->has('end_date')) {
-            $query->whereDate('date_time', '<=', $request->end_date);
-        }
-        
-        $total = $query->sum('amount');
-        $count = $query->count();
-        
-        // Get expenses grouped by category
-        $byCategory = Expense::with('category')
-            ->select('category_id')
-            ->selectRaw('SUM(amount) as total')
-            ->when($request->has('start_date'), function($q) use ($request) {
-                return $q->whereDate('date_time', '>=', $request->start_date);
-            })
-            ->when($request->has('end_date'), function($q) use ($request) {
-                return $q->whereDate('date_time', '<=', $request->end_date);
-            })
-            ->groupBy('category_id')
-            ->get();
-        
-        return response()->json([
-            'total' => $total,
-            'count' => $count,
-            'by_category' => $byCategory
-        ]);
-    }
+ 
 }

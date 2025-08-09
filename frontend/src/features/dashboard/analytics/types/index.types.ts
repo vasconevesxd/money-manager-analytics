@@ -3,4 +3,5 @@ export type ExpensesCategoriesSerie = {
   color: string;
   amount: number;
   percentage: number;
+  currency_code: string;
 };

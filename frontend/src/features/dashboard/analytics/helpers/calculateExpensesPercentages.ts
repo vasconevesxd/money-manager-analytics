@@ -1,5 +1,5 @@
 import Decimal from 'decimal.js';
-import type { ExpensesCategoriesSerie } from '../types';
+import type { ExpensesCategoriesSerie } from '../types/index.types';
 
 export function calculateExpensesPercentages(
   series: ExpensesCategoriesSerie[]

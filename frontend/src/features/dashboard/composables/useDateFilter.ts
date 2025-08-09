@@ -5,8 +5,8 @@ import { computed, type Ref } from 'vue';
 import dayjs from 'dayjs';
 
 // Types
-import type { DateFilter } from '@/types/db/apiTypes';
-import type { TimeframeType } from '@/types';
+import type { DateFilter } from '@/types/db/api.types';
+import type { TimeframeType } from '@/types/index.types';
 
 export const useDateFilter = (
   timeframe: Ref<TimeframeType>,

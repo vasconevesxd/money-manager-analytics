@@ -21,7 +21,6 @@ class ExpenseSeeder extends Seeder
                 'amount' => 23.50,
                 'currency_code' => 'EUR',
                 'comment' => 'Groceries from Lidl',
-                'category_budget_rule_id' => 1,
             ],
             [
                 'date_time' => Carbon::now()->subDays(4),
@@ -29,7 +28,6 @@ class ExpenseSeeder extends Seeder
                 'amount' => 15.00,
                 'currency_code' => 'EUR',
                 'comment' => 'Uber to work',
-                'category_budget_rule_id' => 1,
             ],
             [
                 'date_time' => Carbon::now()->subDays(7),
@@ -37,7 +35,6 @@ class ExpenseSeeder extends Seeder
                 'amount' => 49.99,
                 'currency_code' => 'USD',
                 'comment' => 'Spotify and Netflix subscription',
-                'category_budget_rule_id' => 2,
             ],
             [
                 'date_time' => Carbon::now()->subDays(10),
@@ -45,7 +42,6 @@ class ExpenseSeeder extends Seeder
                 'amount' => 78.20,
                 'currency_code' => 'EUR',
                 'comment' => 'Electricity bill',
-                'category_budget_rule_id' => 2,
             ],
             [
                 'date_time' => Carbon::now()->subDays(12),
@@ -53,7 +49,6 @@ class ExpenseSeeder extends Seeder
                 'amount' => 32.00,
                 'currency_code' => 'EUR',
                 'comment' => 'Pharmacy - flu medicine',
-                'category_budget_rule_id' => null,
             ],
             [
                 'date_time' => Carbon::now()->subDays(15),
@@ -61,7 +56,6 @@ class ExpenseSeeder extends Seeder
                 'amount' => 64.75,
                 'currency_code' => 'EUR',
                 'comment' => 'Dinner with friends at Italian restaurant',
-                'category_budget_rule_id' => 1,
             ],
         ];
 

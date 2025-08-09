@@ -1,7 +1,17 @@
 <script setup lang="ts">
+  // Vue
   import { ref, computed } from 'vue';
+
+  // Libraries
+  import Decimal from 'decimal.js';
+
+  // Types
+  import type { Expense } from '@/types/db/index.types';
+
+  // Components
   import PieChart from '@/components/charts/PieChart.vue';
-  import type { Expense } from '@/types/db';
+
+  // Composables
   import { useExpensesCategoriesSeries } from './composables/useExpensesCategoriesSeries';
 
   const props = defineProps<{ expenses: Expense[] | undefined }>();
@@ -14,8 +24,10 @@
     selectedName.value = selectedName.value === name ? '' : name;
   };
 
-  const formatAmount = (amount: number): string => {
-    return `${amount.toFixed(1)}€`;
+  const formatAmount = (amount: number, currency: string): string => {
+    return new Decimal(amount)
+      .toNumber()
+      .toLocaleString('en-US', { style: 'currency', currency: currency });
   };
 </script>
 
@@ -44,7 +56,9 @@
             </div>
 
             <span class="text-sm font-medium text-end text-gray-900">
-              {{ formatAmount(category.amount) }} ({{ category.percentage }}%)
+              {{ formatAmount(category.amount, category.currency_code) }} ({{
+                category.percentage
+              }}%)
             </span>
           </button>
         </div>

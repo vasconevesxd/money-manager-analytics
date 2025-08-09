@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique()->notNull();
             $table->string('color')->nullable();
+            $table->foreignId('category_budget_rule_id')->nullable()->constrained('categories_budget_rule');
             $table->timestamps();
         });
     }

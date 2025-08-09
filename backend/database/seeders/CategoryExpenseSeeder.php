@@ -49,6 +49,7 @@ class CategoryExpenseSeeder extends Seeder
             CategoryExpense::create([
                 'name' => $name,
                 'color' => $colors[$index % count($colors)],
+                'category_budget_rule_id' => rand(1, 3),
             ]);
         }
     }

@@ -4,14 +4,14 @@
 
   // Local imports
   import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-  import type { TimeframeType } from '@/types';
+  import type { TimeframeType } from '@/types/index.types';
 
   const props = defineProps<{
     timeframe: TimeframeType;
   }>();
 
   const emit = defineEmits<{
-  (e: 'update:timeframe', value: TimeframeType): void;
+    (e: 'update:timeframe', value: TimeframeType): void;
   }>();
 
   const timeframe = ref<TimeframeType>(props.timeframe);
@@ -32,9 +32,8 @@
         <TabsTrigger value="custom">Custom</TabsTrigger>
       </TabsList>
       <TabsContent :value="timeframe">
-          <slot name="panels" :timeframe="timeframe" />
+        <slot name="panels" :timeframe="timeframe" />
       </TabsContent>
     </Tabs>
   </section>
 </template>
-

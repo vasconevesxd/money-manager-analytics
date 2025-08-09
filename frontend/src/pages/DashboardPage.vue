@@ -3,9 +3,9 @@
   import { ref } from 'vue';
 
   // Types
-  import type { TimeframeType } from '@/types';
-  import { Timeframe } from '@/types';
-  import type { CustomDateRange } from '@/features/dashboard/filters/types';
+  import type { TimeframeType } from '@/types/index.types';
+  import { Timeframe } from '@/types/index.types';
+  import type { CustomDateRange } from '@/features/dashboard/filters/types/index.types';
 
   //Libraries
   import dayjs from 'dayjs';
@@ -38,6 +38,7 @@
     isLoading: isLoadingExpenses,
     error: expensesError,
   } = useExpenseTimeFilterQuery(dateFilter);
+
   const {
     data: incomeSummary,
     isLoading: isLoadingIncome,
@@ -51,7 +52,6 @@
   const handleTimeframeChange = (val: TimeframeType) => {
     timeframe.value = val;
   };
-  
 </script>
 
 <template>
@@ -87,7 +87,6 @@
     </TimeFilter>
   </main>
 </template>
-
 
 <style scoped>
   /* Fade + Slide Transition */

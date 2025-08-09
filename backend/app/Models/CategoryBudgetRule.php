@@ -16,7 +16,7 @@ class CategoryBudgetRule extends Model
 
     public function expenses()
     {
-        return $this->hasMany(Expense::class, 'category_budget_rule_id');
+        return $this->hasMany(CategoryExpense::class, 'category_budget_rule_id');
     }
 
     public function incomes()

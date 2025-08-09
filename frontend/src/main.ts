@@ -6,6 +6,8 @@ import HighchartsVue from 'highcharts-vue';
 import router from './router';
 import { createPinia } from 'pinia';
 
+import 'vue-color/style.css';
+
 const app = createApp(App);
 const pinia = createPinia();
 

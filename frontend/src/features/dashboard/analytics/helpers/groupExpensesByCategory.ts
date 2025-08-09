@@ -1,5 +1,5 @@
-import type { Expense } from '@/types/db';
-import type { ExpensesCategoriesSerie } from '../types';
+import type { Expense } from '@/types/db/index.types';
+import type { ExpensesCategoriesSerie } from '../types/index.types';
 
 export function groupExpensesByCategory(expenses: Expense[]): ExpensesCategoriesSerie[] {
   const map = new Map<string, ExpensesCategoriesSerie>();
@@ -17,6 +17,7 @@ export function groupExpensesByCategory(expenses: Expense[]): ExpensesCategories
         color: category.color || '#000000',
         amount: expense.amount,
         percentage: 0,
+        currency_code: expense.currency_code,
       });
     }
   }

@@ -21,7 +21,6 @@ class IncomeSeeder extends Seeder
                 'amount' => 3200.00,
                 'currency_code' => 'EUR',
                 'comment' => 'Monthly salary from OffX',
-                'category_budget_rule_id' => 1,
             ],
             [
                 'date_time' => Carbon::now()->subDays(10),
@@ -29,7 +28,6 @@ class IncomeSeeder extends Seeder
                 'amount' => 850.75,
                 'currency_code' => 'USD',
                 'comment' => 'Web development freelance project',
-                'category_budget_rule_id' => null,
             ],
             [
                 'date_time' => Carbon::now()->subDays(20),
@@ -37,7 +35,6 @@ class IncomeSeeder extends Seeder
                 'amount' => 150.30,
                 'currency_code' => 'EUR',
                 'comment' => 'Dividend from S&P 500 ETF',
-                'category_budget_rule_id' => 2,
             ],
             [
                 'date_time' => Carbon::now()->subDays(30),
@@ -45,7 +42,6 @@ class IncomeSeeder extends Seeder
                 'amount' => 200.00,
                 'currency_code' => 'EUR',
                 'comment' => 'Birthday gift from family',
-                'category_budget_rule_id' => null,
             ],
             [
                 'date_time' => Carbon::now()->subDays(40),
@@ -53,7 +49,6 @@ class IncomeSeeder extends Seeder
                 'amount' => 950.00,
                 'currency_code' => 'EUR',
                 'comment' => 'Rent from apartment',
-                'category_budget_rule_id' => 3,
             ],
         ];
 

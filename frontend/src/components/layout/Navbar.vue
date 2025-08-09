@@ -5,7 +5,7 @@
 
   const navItems = [
     { name: 'Dashboard', icon: Home, route: '/' },
-    { name: 'Categories', icon: ChartColumnStacked, route: '/categories' },
+    { name: 'Budget Management', icon: ChartColumnStacked, route: '/budget-management' },
     { name: 'Import', icon: ArrowDownToLine, route: '/import' },
   ];
 </script>

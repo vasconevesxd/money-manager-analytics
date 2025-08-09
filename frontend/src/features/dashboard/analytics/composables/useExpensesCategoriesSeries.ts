@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 import type { Ref } from 'vue';
-import type { Expense } from '@/types/db';
-import type { ExpensesCategoriesSerie } from '../types';
+import type { Expense } from '@/types/db/index.types';
+import type { ExpensesCategoriesSerie } from '../types/index.types';
 import { groupExpensesByCategory } from '../helpers/groupExpensesByCategory';
 import { calculateExpensesPercentages } from '../helpers/calculateExpensesPercentages';
 

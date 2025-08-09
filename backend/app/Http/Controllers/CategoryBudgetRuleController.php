@@ -8,12 +8,10 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryBudgetRuleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function getAllCategoryBudgetRule()
     {
         $categoryBudgetRules = CategoryBudgetRule::all();
+        $categoryBudgetRules->makeHidden(['created_at', 'updated_at']);
         return response()->json($categoryBudgetRules);
     }
 
@@ -35,4 +33,17 @@ class CategoryBudgetRuleController extends Controller
         return response()->json($categoryBudgetRule);
     }
 
+    public function update(Request $request, int $id)
+    {
+        $categoryBudgetRule = CategoryBudgetRule::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'required|string|unique:categories_budget_rule,name',
+        ]);
+
+        $categoryBudgetRule->update($validated);
+        $categoryBudgetRule->makeHidden(['created_at', 'updated_at']);
+
+        return response()->json($categoryBudgetRule);
+    }
 }

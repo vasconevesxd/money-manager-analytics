@@ -1,13 +1,12 @@
 <script setup lang="ts">
   import { ref, watch } from 'vue';
-  import type { TimeframeType } from '@/types';
+  import type { TimeframeType } from '@/types/index.types';
   import InputDatepicker from '@/components/datepicker/InputDatepicker.vue';
-  import type { CustomDateRange } from './types';
-
+  import type { CustomDateRange } from './types/index.types';
 
   const emit = defineEmits<{
-  (e: 'update:customDateRangeSelected', value: CustomDateRange): void;
-}>();
+    (e: 'update:customDateRangeSelected', value: CustomDateRange): void;
+  }>();
 
   const props = defineProps<{
     timeframe: TimeframeType;
@@ -22,7 +21,7 @@
   watch(
     customDateRangeSelected,
     (newDataRange) => {
-        emit('update:customDateRangeSelected', newDataRange);
+      emit('update:customDateRangeSelected', newDataRange);
     },
     { deep: true }
   );
