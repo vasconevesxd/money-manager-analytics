@@ -80,11 +80,9 @@
             />
             <CategoriesExpensesChart
               :expenses="expensesByTimeframe"
-              :request-state="{ isLoadingExpenses, expensesError }"
             />
             <AverageExpensesTable
               :expenses="expensesByTimeframe"
-              :request-state="{ isLoadingExpenses, expensesError }"
             />
           </section>
         </Transition>

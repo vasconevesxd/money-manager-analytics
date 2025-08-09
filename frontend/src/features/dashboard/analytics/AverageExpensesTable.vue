@@ -1,4 +1,7 @@
 <script setup lang="ts">
+  // Vue
+  import { computed } from 'vue';
+
   // Components
   import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
   import {
@@ -23,7 +26,7 @@
     expenses: Expense[] | undefined;
   }>();
 
-  const averageExpenses = useAverageExpensesTable(props.expenses ?? []);
+  const averageExpenses = useAverageExpensesTable(computed(() => props.expenses ?? []));
 
   const formatAmount = (amount: number, currency: string): string => {
     return new Decimal(amount)
