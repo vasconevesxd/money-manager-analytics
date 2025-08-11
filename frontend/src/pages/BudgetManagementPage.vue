@@ -26,12 +26,12 @@
     <CategoriesCard>
       <div class="flex justify-end gap-4 mb-2">
         <AddBudget />
-        <EditBudget v-if="categoryBudgetRules" :categoryBudgetRules="categoryBudgetRules" />
+        <EditBudget v-if="categoryBudgetRules" :category-budget-rules="categoryBudgetRules" />
       </div>
       <TableCategories
         v-if="categoryBudgetRules && categoryExpensesWithBudgetRule"
-        :categoryBudgetRules="categoryBudgetRules"
-        :categoryExpensesWithBudgetRule="categoryExpensesWithBudgetRule"
+        :category-budget-rules="categoryBudgetRules"
+        :category-expenses-with-budget-rule="categoryExpensesWithBudgetRule"
       />
     </CategoriesCard>
   </main>

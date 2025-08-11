@@ -39,7 +39,7 @@ class ExpenseController extends Controller
         $expenses->each(function ($expense) {
             $expense->makeHidden(['category_id', 'category_budget_rule_id', 'created_at', 'updated_at']);
             if ($expense->category) {
-                $expense->category->makeHidden(['created_at', 'updated_at']);
+                $expense->category->makeHidden(['created_at', 'updated_at','category_budget_rule_id']);
                 if ($expense->category->category_budget_rule) {
                     $expense->category->category_budget_rule->makeHidden(['created_at', 'updated_at']);
                 }

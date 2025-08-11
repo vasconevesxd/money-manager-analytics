@@ -57,7 +57,7 @@
         </PopoverContent>
       </Popover>
       <!-- Bind hidden input to form field value -->
-      <input type="hidden" v-model="field.value" />
+      <input v-model="field.value" type="hidden" />
     </FormItem>
   </FormField>
 </template>

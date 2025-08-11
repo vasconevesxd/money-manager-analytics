@@ -1,6 +1,7 @@
 import type { Expense } from '@/types/db/index.types';
 import type { ExpensesCategoriesSerie } from '../types/index.types';
 
+//TODO: Handle expenses with different currencies
 export function groupExpensesByCategory(expenses: Expense[]): ExpensesCategoriesSerie[] {
   const map = new Map<string, ExpensesCategoriesSerie>();
 

@@ -30,7 +30,10 @@ class IncomeController extends Controller
 
         // Hide foreign keys from each Income
         $incomes->each(function ($income) {
-            $income->makeHidden(['category_id']);
+            $income->makeHidden(['category_id', 'updated_at', 'created_at']);
+            if ($income->category) {
+                $income->category->makeHidden(['created_at', 'updated_at']);
+            }
         });
         
         return response()->json($incomes);

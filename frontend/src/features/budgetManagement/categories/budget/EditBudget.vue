@@ -78,7 +78,7 @@
               class="focus-visible:ring-0"
               type="text"
               placeholder="e.g: Luxury, Essential etc."
-              :defaultValue="category.name"
+              :default-value="category.name"
               @update:model-value="
                 debouncedEditCategoryBudget({ id: category.id, name: $event as string })
               "
